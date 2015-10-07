@@ -7,10 +7,13 @@ function init(){
     document.addEventListener("deviceready", setbuttons, false);
     document.addEventListener("deviceready", initPushwoosh, true);
     document.addEventListener("deviceready", showResultsButtons, false);
-   // document.addEventListener("deviceready", loadscreen, false);
+    document.addEventListener("deviceready", allowSaving, false);
 }
 
-
+function allowSaving(){
+    
+    $.support.cors=true;
+}
 //listen for click events      
 function setbuttons() {
 

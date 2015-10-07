@@ -568,254 +568,6 @@ function checkConnection(whichfunction) {
     }
 }
 
-
-/* Functions for processing data -----------------------------------------------*/
-
-
-//get answers from form and build json array
-function getinputs(answerset,num1,num2,prefix){
-    var i, key, value;
-    //loop through the entries, grab value and store in array
-    for(i=num1; i<=num2; i++) {
-        key = "'" + prefix + i +"'";
-        value = $('input[name = ' + key + ']:checked').val();
-        answerset.answers[i] = value;
-    }
-    
-    return answerset;
-}
-
-var gsSaved = "false", ag1Saved = "false", ag2Saved = "false", ag3Saved = "false", ag4Saved = "false", ag5Saved = "false";
-
-//save the json data array to the server via ajax call
-function saveToServer(address,dataset,datasaved){
-            $.ajax({
-            type       : "GET",
-            url        : address,
-            crossDomain: true,
-            data       : dataset,
-            contentType: 'application/json; charset=utf-8',
-            ////dataType   : 'json',
-            success    : function(responseData) {
-                        navigator.notification.alert(responseData, goTo(), "Update", "OK");
-                        localStorage.setItem(datasaved, "true");
-                        showResultsButtons();
-                        },
-            error      : function(response) {
-                        navigator.notification.alert(responseData);                
-                         } 
-                         
-            });
-            
-        }
-
-/* Initial Govscore -----------------------------------------------*/
-
-var gsdata = localStorage.getObject('gsdata'); 
-var ag1data = localStorage.getObject('ag1data');
-var ag2data = localStorage.getObject('ag2data');
-var ag3data = localStorage.getObject('ag3data');
-var ag4data = localStorage.getObject('ag4data');
-var ag5data = localStorage.getObject('ag5data');
- 
-/* store locally */
-function savelocal() {
-
-    var userdata, email, gsdate, username;
-
-    username = document.getElementById("username").value;
-    email = document.getElementById("email").value;
-    organization = document.getElementById("organization").value;
-    gsdate  = formatDate(new Date());
-
-    //construct the json array for user data and add to local storage
-    gsdata = {'username': username, 'email': email, 'organization': organization, 'gsdate': gsdate, 'answers':[-1]};
-    gsdata = getinputs(gsdata,1,25,"g");
-    localStorage.setObject('gsdata', gsdata);
-    
-    calcResults();
-
-    //now that everything is saved, check the connection
-    checkConnection( "cgovscore");
-}
-
-/* save to server */
-
-function saveServer() {
-
-    var gsdata;
-
-    //get the data from local storage
-    gsdata = localStorage.getObject('gsdata');
-
-    saveToServer("http://mshlmg.wpengine.com/store-gs.php", gsdata, "gsSaved");
-
-}
-
-/* AG 1 -------------------------------------------------------*/
-
-/* store locally */
-
-function ag1savelocal() {
-
-    var ag1date;
-
-    gsdata = localStorage.getObject('gsdata');
-
-    ag1date = formatDate(new Date());
-
-    ag1data = { 'ag1date':ag1date, 'email': gsdata.email, 'answers': [-1]};
-    ag1data = getinputs(ag1data,1,24,"ag");
-
-    localStorage.setObject('ag1data', ag1data);
-
-    calcResults()
-    //now that everything is saved check the connection
-    checkConnection("cag1");
-    
-}
-
-/* Save on Server */
-
-function ag1saveServer() {
-          
-    ag1data = localStorage.getObject('ag1data');
-    saveToServer("http://mshlmg.wpengine.com/store-ag.php", ag1data, "ag1Saved");
-        
-}
-
-/* AG 2 -------------------------------------------------------*/
-
-/* store locally */
-
-function ag2savelocal() {
-
-    var ag2date;
-
-    gsdata = localStorage.getObject('gsdata');
-
-    ag2date = formatDate(new Date());
-
-    ag2data = { 'ag2date':ag2date, 'email': gsdata.email, 'answers': [-1]};
-    ag2data = getinputs(ag2data,25,48,"ag");
-
-    localStorage.setObject('ag2data', ag2data);
-
-    calcResults()
-    //now that everything is saved check the connection
-    checkConnection("cag2");
-    
-}
-
-/* Save on Server */
-
-function ag2saveServer() {
- 
-    ag2data = localStorage.getObject('ag2data');
-    saveToServer("http://mshlmg.wpengine.com/store-ag.php", ag2data, "ag2Saved");
-        
-}
-
-/* AG 3 -------------------------------------------------------*/
-
-/* store locally */
-
-function ag3savelocal() {
-
-    var ag3date;
-
-    gsdata = localStorage.getObject('gsdata');
-
-    ag3date = formatDate(new Date());
-
-    ag3data = { 'ag3date':ag3date, 'email': gsdata.email, 'answers': [-1]};
-    ag3data = getinputs(ag3data,49,60,"ag");
-
-    localStorage.setObject('ag3data', ag3data);
-
-    calcResults()
-
-    //now that everything is saved check the connection
-    checkConnection("cag3");
-    
-}
-
-/* Save on Server */
-
-function ag3saveServer() {
-
-    ag3data = localStorage.getObject('ag3data');
-    saveToServer("http://mshlmg.wpengine.com/store-ag.php", ag3data, "ag3Saved");
-
-}
-
-/* AG 4 -------------------------------------------------------*/
-
-/* store locally */
-
-function ag4savelocal() {
-
-    var ag4date;
-
-    gsdata = localStorage.getObject('gsdata');
-
-    ag4date = formatDate(new Date());
-
-    ag4data = { 'ag4date':ag4date, 'email': gsdata.email, 'answers': [-1]};
-    ag4data = getinputs(ag4data,61,84,"ag");
-
-    localStorage.setObject('ag4data', ag4data);
-
-    calcResults()
-
-    //now that everything is saved check the connection
-    checkConnection("cag4");
-    
-}
-
-/* Save on Server */
-
-function ag4saveServer() {
-    
-    ag4data = localStorage.getObject('ag4data');
-    saveToServer("http://mshlmg.wpengine.com/store-ag.php", ag4data, "ag4Saved");
-
-}
-
-/* AG 5 -------------------------------------------------------*/
-
-/* store locally */
-
-function ag5savelocal() {
-
-    var ag5date;
-
-    gsdata = localStorage.getObject('gsdata');
-
-    ag5date = formatDate(new Date());
-
-    ag5data = { 'ag5date':ag5date, 'email': gsdata.email, 'answers': [-1]};
-    ag5data = getinputs(ag5data,85,100,"ag");
-    
-    localStorage.setObject('ag5data', ag5data);
-
-    calcResults()
-    //now that everything is saved check the connection
-    checkConnection("cag5");
-    
-}
-
-/* Save on Server */
-
-function ag5saveServer() {
-
-    ag5data = localStorage.getObject('ag5data');
-    saveToServer("http://mshlmg.wpengine.com/store-ag.php", ag5data, "ag5Saved");
-
-    
-} 
-
-
 /* App Comes Online ------------------------------------------*/
 
 //check if online according to the above interval
@@ -849,6 +601,164 @@ function onOnline(event) {
         return false;
     }
 }
+
+
+/* Functions for processing data -----------------------------------------------*/
+
+
+//get answers from form and build json array
+function getinputs(answerset,num1,num2,prefix){
+    var i, key, value;
+    //loop through the entries, grab value and store in array
+    for(i=num1; i<=num2; i++) {
+        key = "'" + prefix + i +"'";
+        value = $('input[name = ' + key + ']:checked').val();
+        answerset.answers[i] = value;
+    }
+    
+    return answerset;
+}
+
+var gsSaved = "false", ag1Saved = "false", ag2Saved = "false", ag3Saved = "false", ag4Saved = "false", ag5Saved = "false";
+
+//save the json data array to the server via ajax call
+function saveToServer(address,dataset,datasaved){
+            $.ajax({
+            type       : "GET",
+            url        : address,
+            crossDomain: true,
+            data       : dataset,
+            contentType: 'application/json; charset=utf-8',
+            ////dataType   : 'json',
+            success    : function(responseData) {
+                        navigator.notification.alert(responseData, goTo(), "Update", "OK");
+                        localStorage.setItem(datasaved, "true");
+                        showResultsButtons();
+                        },
+            error      : function(responseData) {
+                        navigator.notification.alert(responseData);                
+                         } 
+                         
+            });
+            
+        }
+
+/* Saving -----------------------------------------------*/
+
+var gsdata = localStorage.getObject('gsdata'); 
+var ag1data = localStorage.getObject('ag1data');
+var ag2data = localStorage.getObject('ag2data');
+var ag3data = localStorage.getObject('ag3data');
+var ag4data = localStorage.getObject('ag4data');
+var ag5data = localStorage.getObject('ag5data');
+ 
+
+/* Saving Govscore --------------------------------------*/
+
+/* store locally */
+function savelocal() {
+
+    var userdata, email, gsdate, username, mylang;
+
+    username = document.getElementById("username").value;
+    email = document.getElementById("email").value;
+    gsdate  = formatDate(new Date());
+    mylang = localStorage.getObject('mylang');
+
+    //construct the json array for user data and add to local storage
+    gsdata = {'username': username, 'email': email, 'gsdate': gsdate, 'mylang': mylang, 'answers':[-1]};
+    gsdata = getinputs(gsdata,1,25,"g");
+    localStorage.setObject('gsdata', gsdata);
+    calcResults();
+
+    //now that everything is saved, check the connection
+    checkConnection( "cgovscore");
+}
+
+/* save to server */
+function saveServer() {
+    var ggsdata;
+    //get the data from local storage
+    ggsdata = localStorage.getObject('gsdata');
+    saveToServer("http://mshlmg.wpengine.com/store-gg-initial.php", ggsdata, "gsSaved");
+
+}
+
+/* Saving Advanced Govscore Data ----------------------------------------*/
+
+/* store locally */
+
+function ag1savelocal() {
+    gsdata = localStorage.getObject('gsdata');
+    var ag1date = formatDate(new Date());
+    ag1data = { 'ag1date':ag1date, 'email': gsdata.email, 'mylang': gsdata.mylang, 'answers': [-1]};
+    ag1data = getinputs(ag1data,1,24,"ag");
+    localStorage.setObject('ag1data', ag1data);
+    calcResults();
+    checkConnection("cag1");   
+}
+function ag2savelocal() {
+    gsdata = localStorage.getObject('gsdata');
+    var ag2date = formatDate(new Date());
+    ag2data = { 'ag2date':ag2date, 'email': gsdata.email, 'mylang': gsdata.mylang, 'answers': [-1]};
+    ag2data = getinputs(ag2data,25,48,"ag");
+    localStorage.setObject('ag2data', ag2data);
+    calcResults();
+    checkConnection("cag2");
+}
+function ag3savelocal() {
+    gsdata = localStorage.getObject('gsdata');
+    var ag3date = formatDate(new Date());
+    ag3data = { 'ag3date':ag3date, 'email': gsdata.email, 'mylang': gsdata.mylang, 'answers': [-1]};
+    ag3data = getinputs(ag3data,49,60,"ag");
+    localStorage.setObject('ag3data', ag3data);
+    calcResults();
+    checkConnection("cag3");
+}
+function ag4savelocal() {
+    gsdata = localStorage.getObject('gsdata');
+    var ag4date = formatDate(new Date());
+    ag4data = { 'ag4date':ag4date, 'email': gsdata.email, 'mylang': gsdata.mylang, 'answers': [-1]};
+    ag4data = getinputs(ag4data,61,84,"ag");
+    localStorage.setObject('ag4data', ag4data);
+    calcResults();
+    checkConnection("cag4");   
+}
+function ag5savelocal() {
+    gsdata = localStorage.getObject('gsdata');
+    var ag5date = formatDate(new Date());
+    ag5data = { 'ag5date':ag5date, 'email': gsdata.email, 'mylang': gsdata.mylang, 'answers': [-1]};
+    ag5data = getinputs(ag5data,85,100,"ag");  
+    localStorage.setObject('ag5data', ag5data);
+    calcResults();
+    checkConnection("cag5");  
+}
+
+/* Save on Server */
+
+function ag1saveServer() {        
+    agg1data = localStorage.getObject('ag1data');
+    saveToServer("http://mshlmg.wpengine.com/store-gg-adv.php", agg1data, "ag1Saved");        
+}
+function ag2saveServer() {
+    agg2data = localStorage.getObject('ag2data');
+    saveToServer("http://mshlmg.wpengine.com/store-gg-adv.php", agg2data, "ag2Saved");       
+}
+function ag3saveServer() {
+
+    agg3data = localStorage.getObject('ag3data');
+    saveToServer("http://mshlmg.wpengine.com/store-gg-adv.php", agg3data, "ag3Saved");
+
+}
+function ag4saveServer() {    
+    agg4data = localStorage.getObject('ag4data');
+    saveToServer("http://mshlmg.wpengine.com/store-gg-adv.php", agg4data, "ag4Saved");
+}
+function ag5saveServer() {
+    agg5data = localStorage.getObject('ag5data');
+    saveToServer("http://mshlmg.wpengine.com/store-gg-adv.php", agg5data, "ag5Saved");   
+} 
+
 
 /* Interface changes -----------------------------------------*/ 
 

@@ -519,8 +519,7 @@ function formatDate(date) {
 }
 
 
-
-/*------------check the connection --------------*/
+/*------------check network connection --------------*/
 
 function checkConnection(whichfunction) {
     var networkState = navigator.connection.type;
@@ -555,25 +554,23 @@ function checkConnection(whichfunction) {
                 ag5saveServer();
                 break;
         }
-
     }else{
-
-        messageAfterSaveLocal();  
-        
+        if(mylang == "fr" ) {
+                    notification(" Vos réponses ont été conservées sur votre appareil. Elles seront sauvegardées sur notre serveur lorsque vous serez à nouveau connectés à l’Internet.", goTo(), "Pas de connexion à l’Internet", "OK");
+                }else if(mylang == "es" ) {
+                    notification(" Sus respuestas han sido guardadas en su dispositivo. Éstas serán almacenadas en su servidor cuando usted vuelva a ingresar al Internet.", goTo(), "No hay conexión a Internet.", "OK");
+                }else if(mylang == "pt" ) {
+                    notification("Suas respostas foram armazenadas no seu dispositivo. Serão guardadas em nosso servidor quando se reconectar à Internet.", goTo(), "Sem conexão com Internet", "OK");
+                }else{
+                    notification("Your answers have been stored on your device. They will be saved to our server when you get reconnected to the internet.", goTo(), "No Internet Connection", "OK");
+                }
+             
     }
 }
 
 
 /* Functions for processing data -----------------------------------------------*/
 
-Storage.prototype.setObject = function(key, value) {
-    this.setItem(key, JSON.stringify(value));
-}
-
-Storage.prototype.getObject = function(key) {
-    var value = this.getItem(key);
-    return value && JSON.parse(value);
-}
 
 //get answers from form and build json array
 function getinputs(answerset,num1,num2,prefix){

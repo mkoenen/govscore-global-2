@@ -23,6 +23,16 @@ function setbuttons() {
 
 }
 
+/* Local Storage ----------------------------------*/
+Storage.prototype.setObject = function(key, value) {
+    this.setItem(key, JSON.stringify(value));
+}
+
+Storage.prototype.getObject = function(key) {
+    var value = this.getItem(key);
+    return value && JSON.parse(value);
+}
+
 /* Language ----------------------------------------*/
 function checkLanguage() {
   navigator.globalization.getPreferredLanguage(
@@ -314,249 +324,178 @@ function map_all(){
 
 function validate(event) {
   if(gsdata){
-
-        alreadySaved();
-
-  }else{
+        if(mylang == "fr" ) {
+                notification('Vous avez déjà rempli cette évaluation. Veuillez consulter vos résultats.', goTo(), "Déjà complété", "OK");
+            }else if(mylang == "es" ) {
+                notification('Usted terminó esta evaluación previamente. Por favor verifique sus resultados.', goTo(), "Ya está completada", "OK");
+            }else if(mylang == "pt" ) {
+                notification('Você concluiu esta avaliação anteriormente. Favor verificar seus resultados.', goTo(), "Já concluído", "OK");
+            }else{
+                notification('You previously finished this assessment. Please check your results.', goTo(), "Already Completed", "OK");
+            }
         
-        
+  }else{  
       if( document.gsForm.username.value === "" ) {
-
-             navigator.notification.alert( "Please enter your full name!" );
+            if(mylang == "fr" ) {
+                notification(  "Veuillez saisir votre nom complet." );
+            }else if(mylang == "es" ) {
+                notification(  "Por favor ingrese su nombre y apellido." );
+            }else if(mylang == "pt" ) {
+                notification(  "Favor digitar seu nome completo." );
+            }else{
+                notification(  "Please enter your full name." );
+            }
+             
              document.gsForm.username.focus();
              event.preventDefault();
-             return false;
-             
+             return false;      
       }
       if( document.gsForm.email.value !== document.gsForm.email2.value ) {
-
-            navigator.notification.alert( "Email entries don't match. Please try again" );
-            document.gsForm.email.focus();
-            event.preventDefault();
-            return false;
+            if(mylang == "fr" ) {
+                notification(  "Le courriel que vous avez saisi ne correspond pas. Veuillez réessayer." );
+            }else if(mylang == "es" ) {
+                notification(  "Los datos enviados por email no son compatibles. Por favor intente nuevamente. " );
+            }else if(mylang == "pt" ) {
+                notification(  "Os emails informados não coincidem. Favor tentar novamente." );
+            }else{
+                notification(  "Email entries don't match. Please try again." );
+            }
             
+            document.gsForm.email.focus();
+            event.preventDefault();
+            return false;    
       }
-
       if( document.gsForm.email.value === "" ) {
-
-            navigator.notification.alert( "Please enter your email address!" );
+            if(mylang == "fr" ) {
+                notification(  "Veuillez saisir votre adresse e-mail!" );
+            }else if(mylang == "es" ) {
+                notification(  " Por favor ingrese su dirección de email!" );
+            }else if(mylang == "pt" ) {
+                notification(  "Favor informar seu endereço de email!" );
+            }else{
+                notification(  "Please enter your email address!" );
+            }
             document.gsForm.email.focus();
             event.preventDefault();
             return false;
-
       }else{
-
             // Put extra check for data format
             var ret = validateEmail();
             if( ret === false ) {
                 event.preventDefault();
                 return false;
-
              }
       }
-
-
-      if( document.gsForm.organization.value === "-1" ) {
-
-         navigator.notification.alert( "Please enter your organization!" );
-         document.gsForm.organization.focus();
-         event.preventDefault();
-         return false;
-      }
-       //check that all answers have been answered
-
+      //check that all answers have been answered
       var i, key, value;
       //loop through the entries, grab value and store in array
       for(i=1; i<=25; i++) {
           key = "'g" + i +"'";
           value = $('input[name = ' + key + ']:checked').val();
           if(value === "" || value == undefined) {
-              navigator.notification.alert( "Please answer all questions" );
+                if(mylang == "fr" ) {
+                    notification(  "Veuillez répondre à toutes les questions." );
+                }else if(mylang == "es" ) {
+                    notification(  " Por favor responda todas las preguntas." );
+                }else if(mylang == "pt" ) {
+                    notification(  "Favor responder a todas as perguntas." );
+                }else{
+                     notification(  "Please answer all questions.");
+                }
+             
               event.preventDefault();
               return false;
           }
-      }
-        
+      }       
       savelocal();
-
       }
 }
 
-
 function validateEmail() {
-
    var emailID = document.gsForm.email.value;
    var atpos = emailID.indexOf("@");
    var dotpos = emailID.lastIndexOf(".");
    if (atpos < 1 || ( dotpos - atpos < 2 )) {
 
-       navigator.notification.alert("Please enter a correct email address");
+        if(mylang == "fr" ) {
+            notification(  "Veuillez saisir votre adresse e-mail exacte." );
+        }else if(mylang == "es" ) {
+            notification(  " Por favor ingrese su dirección de email correcta." );
+        }else if(mylang == "pt" ) {
+            notification(  "Favor informar seu endereço de email correto." );
+        }else{
+            notification( "Please enter a correct email address.");
+        }
+       
        document.gsForm.email.focus();
        event.preventDefault();
        return false;
    }
-
    return( true );
-
 }
 
-function ag1validate(){
-    if(ag1data){
-
-        alreadySaved();
-
-    }else if(gsdata = null){
-
-        gsFirst();
-
+function adv_validate( savedData, length, keyaug, savefunc){
+    if(savedData){
+        if(mylang == "fr" ) {
+            notification(  "Vous avez déjà rempli cette évaluation. Veuillez consulter vos résultats.", goTo()," Déjà complété", "OK" );
+        }else if(mylang == "es" ) {
+            notification(  " Usted terminó esta evaluación previamente. Por favor verifique sus resultados.", goTo(), "Ya está completada", "OK" );
+        }else if(mylang == "pt" ) {
+            notification(  "Você concluiu esta avaliação anteriormente. Favor verificar seus resultados.", goTo(), "Já concluído", "OK" );
+        }else{
+            notification("You previously finished this assessment. Please check your results.", goTo(), "Already Completed", "OK");
+        }
+        
+    }else if(gsdata == null){
+        if(mylang == "fr" ) {
+            notification(  " Veuillez procéder à l’évaluation GovScore initiale avant d’accéder aux questionnaires d’évaluation approfondie.", goTo(),"Alert", "OK" );
+        }else if(mylang == "es" ) {
+            notification(  "Por favor complete la evaluación inicial de govscore antes de responder los cuestionarios de Advanced Govscore.", goToGs(), "Alert", "OK" );
+        }else if(mylang == "pt" ) {
+            notification(  "Favor concluir a avaliação Govscore inicial, antes de passar para os questionários do Govscore Avançado.", goToGs(), "Alert", "OK" );
+        }else{
+            notification('Please complete the initial Govscore assessment before moving on to the Advanced Govscore questionnaires.', goToGs(), "Alert", "OK");
+        }
+        
     }else{
       var i, key, value;
       //loop through the entries, grab value and store in array
-      for(i=1; i<=24; i++) {
-          key = "'ag" + i +"'";
+      for(i=1; i<=length; i++) {
+          key = "'ag" + (i+keyaug) +"'";
           value = $('input[name = ' + key + ']:checked').val();
           if(value === "" || value == undefined) {
-              navigator.notification.alert( "Please answer all questions" );
+                if(mylang == "fr" ) {
+                    notification(  "Veuillez répondre à toutes les questions." );
+                }else if(mylang == "es" ) {
+                    notification(  "Por favor responda todas las preguntas." );
+                }else if(mylang == "pt" ) {
+                    notification(  "Favor responder a todas as perguntas." );
+                }else{
+                    notification( "Please answer all questions" );
+                }
+              
               event.preventDefault();
               return false;
           }
       }
-
-      ag1savelocal();
-
+      savefunc();
       } 
 }
 
 
-function ag2validate(){
-    if(ag2data){
-
-        alreadySaved();
-
-    }else if(gsdata = null){
-
-        gsFirst();
-
-    }else{
-      var i, key, value;
-      //loop through the entries, grab value and store in array
-      for(i=1; i<=24; i++) {
-          key = "'ag" + (i + 24) +"'";
-          value = $('input[name = ' + key + ']:checked').val();
-          if(value === "" || value == undefined) {
-              navigator.notification.alert( "Please answer all questions" );
-              event.preventDefault();
-              return false;
-          }
-      }
-
-      ag2savelocal();
-
-      }
-}
-
-
-function ag3validate(){
-    if(ag3data){
-
-        alreadySaved();
-
-    }else if(gsdata = null){
-
-        gsFirst();
-
-    }else{
-
-      var i, key, value;
-      //loop through the entries, grab value and store in array
-      for(i=1; i<=12; i++) {
-          key = "'ag" + (i + 48) +"'";
-          value = $('input[name = ' + key + ']:checked').val();
-          if(value === "" || value == undefined) {
-              navigator.notification.alert( "Please answer all questions" );
-              event.preventDefault();
-              return false;
-          }
-      }
-
-      ag3savelocal();
-
-      }
-}
-
-
-function ag4validate(){
-    if(ag4data){
-
-        alreadySaved();
-
-    }else if(gsdata = null){
-
-        gsFirst();
-
-    }else{
-
-      var i, key, value;
-      //loop through the entries, grab value and store in array
-      for(i=1; i<=24; i++) {
-          key = "'ag" + (i + 60) + "'";
-          value = $('input[name = ' + key + ']:checked').val();
-          if(value === "" || value == undefined) {
-              navigator.notification.alert( "Please answer all questions" );
-              event.preventDefault();
-              return false;
-          }
-      }
-        
-      ag4savelocal();
-
-      }
-}
-function ag5validate(){
-    if(ag5data){
-
-        alreadySaved();
-
-    }else if(gsdata = null){
-
-        gsFirst();
-
-    }else{
-
-      var i, key, value;
-      //loop through the entries, grab value and store in array
-      for(i=1; i<=16; i++) {
-          key = "'ag" + (i + 84) +"'";
-          value = $('input[name = ' + key + ']:checked').val();
-          if(value === "" || value == undefined) {
-              navigator.notification.alert( "Please answer all questions" );
-              event.preventDefault();
-              return false;
-          }
-      }
-
-      ag5savelocal();
-
-      }
-}
-
 /* Notifications ----------------------------------*/
-//var organization = gsdata.answers[organization];
 
-function messageAfterSaveLocal() {
-    var saveLocal = 'Your answers have been stored on your device. They will be saved to our server when you get reconnected to the internet.';
-    navigator.notification.alert(saveLocal, goTo(), "No Internet Connection", "OK");
+function notification(message,callbk,title,btname) {
+          navigator.notification.alert(
+              message,      // message
+              callbk,       // callback
+              title,        // title
+              btname        // buttonName
+          );
 }
 
-function alreadySaved() {
-    var alSaved = 'You previously finished this assessment. Please check your results.';
-    navigator.notification.alert(alSaved, goTo(), "Already Completed", "OK");
-}
 
-function gsFirst() {
-    var doFirst = 'Please complete the initial Govscore assessment before moving on to the Advanced Govscore questionnaires.';
-    navigator.notification.alert(doFirst, goToGs(), "Alert", "OK");
-}
+/* Switch Page -----------------------------------------------*/
 
 function goTo(){
     window.location.hash = "govscore-results";
@@ -565,6 +504,7 @@ function goTo(){
 function goToGs() {
     window.location.hash = "govscore";
 }
+
 
 /* Get Date --------------------------------------------------*/
 

@@ -11,20 +11,20 @@ function init(){
 }
 
 function allowSaving(){
-    
+
     $.support.cors=true;
 }
+
 //listen for click events      
 function setbuttons() {
-
     document.getElementById('btnStore').addEventListener('click', validate, false);
-    document.getElementById('ag1Store').addEventListener('click', ag1validate, false);
-    document.getElementById('ag2Store').addEventListener('click', ag2validate, false);
-    document.getElementById('ag3Store').addEventListener('click', ag3validate, false);
-    document.getElementById('ag4Store').addEventListener('click', ag4validate, false);
-    document.getElementById('ag5Store').addEventListener('click', ag5validate, false);
-
+    document.getElementById('ag1Store').addEventListener('click', function(){ adv_validate(ag1data, 24, 0, ag1savelocal); });
+    document.getElementById('ag2Store').addEventListener('click', function(){ adv_validate(ag2data, 24, 24, ag2savelocal); });
+    document.getElementById('ag3Store').addEventListener('click', function(){ adv_validate(ag3data, 12, 48, ag3savelocal); });
+    document.getElementById('ag4Store').addEventListener('click', function(){ adv_validate(ag4data, 24, 60, ag4savelocal); });
+    document.getElementById('ag5Store').addEventListener('click', function(){ adv_validate(ag5data, 16, 84, ag5savelocal); });
 }
+
 
 /* Local Storage ----------------------------------*/
 Storage.prototype.setObject = function(key, value) {

@@ -70,11 +70,12 @@ function translatenow(mylang) {
         map_all();
       });
     }else{
-      $.getScript("js/i18n/translation_en.js", function(){
-        $.i18n.load(i18n_dict);
-        map_all();
+        //just load the normal page
+      // $.getScript("js/i18n/translation_en.js", function(){
+      //   $.i18n.load(i18n_dict);
+      //   map_all();
         
-      });
+      // });
     }
 
 function map_all(){

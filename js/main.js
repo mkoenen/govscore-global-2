@@ -7,13 +7,13 @@ function init(){
     document.addEventListener("deviceready", setbuttons, false);
     document.addEventListener("deviceready", initPushwoosh, true);
     document.addEventListener("deviceready", showResultsButtons, false);
-    document.addEventListener("deviceready", allowSaving, false);
 }
 
-function allowSaving(){
-
-    $.support.cors=true;
-}
+$( document ).bind( "mobileinit", function() {
+    // Make your jQuery Mobile framework configuration changes here!
+    $.support.cors = true;
+    $.mobile.allowCrossDomainPages = true;
+});
 
 //listen for click events      
 function setbuttons() {
@@ -814,11 +814,20 @@ function showResultsButtons() {
 function showResults(){
 
     var storedResult = localStorage.getItem("result");
+    var mylang = localStorage.getObject('mylang');
 
     if(storedResult){
         document.getElementById('gs-results').innerHTML = storedResult;
     }else{
-        document.getElementById('gs-results').innerHTML = "No results available at this time.";
+        if(mylang == "fr" ) {
+            document.getElementById('gs-results').innerHTML = "Aucun résultat disponible à l’heure actuelle.";
+        }else if(mylang == "es" ) {
+            document.getElementById('gs-results').innerHTML = "No hay resultados disponibles en el momento.";
+        }else if(mylang == "pt" ) {
+            document.getElementById('gs-results').innerHTML = "Nenhum resultado disponível ainda.";
+        }else{
+            document.getElementById('gs-results').innerHTML = "No Results Available Yet.";
+        } 
     }
 } 
 

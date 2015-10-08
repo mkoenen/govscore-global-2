@@ -8,7 +8,7 @@
     <!-- versionCode is optional and Android only -->
     
 
-    <name>Govscore Global 2</name>
+    <name>Govscore Global ios</name>
 
     <description>
         Governance Assessment Tool.
@@ -83,12 +83,10 @@
 
     <gap:plugin name="org.apache.cordova.network-information" version="0.2.12" />
     <gap:plugin name="com.pushwoosh.plugins.pushwoosh" source="plugins.cordova.io" />
-    <!--<gap:plugin name="de.appplant.cordova.plugin.background-mode" version="0.5.0" />-->
-    <!-- <gap:plugin name="org.apache.cordova.device" version="0.2.12" /> -->
     <gap:plugin name="org.apache.cordova.splashscreen" version="0.3.4" />
     <gap:plugin name="org.apache.cordova.dialogs" />
     <gap:plugin name="org.apache.cordova.globalization" version="0.3.1" />
-    <gap:plugin name="com.jp.whitelistplugin" version="1.1.1" />
+    
 
     <!--<access origin="*"/>--> <!-- allow all pages, use for development -->
     <access origin="*.pushwoosh.com"/> <!-- allow pushwoosh service -->

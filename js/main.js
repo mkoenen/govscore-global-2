@@ -33,16 +33,23 @@ Storage.prototype.getObject = function(key) {
 
 /* Hide Keyboard ----------------------------------*/
 function hideKeyboard(){
-    notification("where id keyboard");
-    $('#1none-img').click(function(){
-        notification("image has been clicked");
-             $('#email2').blur();
-        });
-    $('#1none-label').click(function(){
-        notification("label has been clicked");
-             $('#email2').blur();
-        });
     $('#1none').click(function(){
+        notification("input has been clicked");
+             $('#email2').blur();
+        });
+    $('#1minimally').click(function(){
+        notification("input has been clicked");
+             $('#email2').blur();
+        });
+    $('#1partly').click(function(){
+        notification("input has been clicked");
+             $('#email2').blur();
+        });
+    $('#1mostly').click(function(){
+        notification("input has been clicked");
+             $('#email2').blur();
+        });
+    $('#1completely').click(function(){
         notification("input has been clicked");
              $('#email2').blur();
         });

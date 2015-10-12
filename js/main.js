@@ -7,6 +7,7 @@ function init(){
     document.addEventListener("deviceready", setbuttons, false);
     document.addEventListener("deviceready", initPushwoosh, true);
     document.addEventListener("deviceready", showResultsButtons, false);
+    document.addEventListener("deviceready", hideKeyboard, false);
 }
 
 //listen for click events      
@@ -28,6 +29,22 @@ Storage.prototype.setObject = function(key, value) {
 Storage.prototype.getObject = function(key) {
     var value = this.getItem(key);
     return value && JSON.parse(value);
+}
+
+/* Hide Keyboard ----------------------------------*/
+function hideKeyboard(){
+    $('#1none-img').click(function(){
+        notification("image has been clicked");
+             $('#email2').blur();
+        });
+    $('#1none-label').click(function(){
+        notification("label has been clicked");
+             $('#email2').blur();
+        });
+    $('#1none').click(function(){
+        notification("input has been clicked");
+             $('#email2').blur();
+        });
 }
 
 /* Language ----------------------------------------*/

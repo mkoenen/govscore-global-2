@@ -33,6 +33,7 @@ Storage.prototype.getObject = function(key) {
 
 /* Hide Keyboard ----------------------------------*/
 function hideKeyboard(){
+    notification("where id keyboard");
     $('#1none-img').click(function(){
         notification("image has been clicked");
              $('#email2').blur();

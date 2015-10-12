@@ -86,6 +86,7 @@
     <gap:plugin name="org.apache.cordova.splashscreen" version="0.3.4" />
     <gap:plugin name="org.apache.cordova.dialogs" />
     <gap:plugin name="org.apache.cordova.globalization" version="0.3.1" />
+    <gap:plugin name="org.apache.cordova.device" version="0.2.12" />
     
 
     <!--<access origin="*"/>--> <!-- allow all pages, use for development -->

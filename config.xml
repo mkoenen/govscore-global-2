@@ -77,9 +77,7 @@
     <preference name="android-installLocation" value="auto" />
     <preference name="SplashScreen" value="splash"/>
     <preference name="SplashMaintainAspectRatio" value="true" />
-    <preference name="FadeSplashScreen" value="false"/>
     <preference name="ShowSplashScreen" value="true" />
-    <preference name="AutoHideSplashScreen" value="false" />
 
     
     <feature name="http://api.phonegap.com/1.0/network"/>

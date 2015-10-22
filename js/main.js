@@ -917,23 +917,23 @@ function calcResults() {
         var percentArray = [], accScore, stakeScore, dirScore, resScore, enhScore, totalScore, mlevel, ag1level, ag2level, ag3level, ag4level, ag5level;
         
 
-        accScore = parseInt(gsdata.answers[1]) + parseInt(gsdata.answers[2]) + parseInt(gsdata.answers[5]) + parseInt(gsdata.answers[8]) + parseInt(gsdata.answers[10]) + parseInt(gsdata.answers[13]);
+        accScore = parseInt(gsdata.answers[1],10) + parseInt(gsdata.answers[2],10) + parseInt(gsdata.answers[5],10) + parseInt(gsdata.answers[8],10) + parseInt(gsdata.answers[10],10) + parseInt(gsdata.answers[13],10);
         var accPercent = getPercent(accScore,24);
         percentArray.push(accPercent);
 
-        stakeScore = parseInt(gsdata.answers[11]) + parseInt(gsdata.answers[14]) + parseInt(gsdata.answers[22]);
+        stakeScore = parseInt(gsdata.answers[11],10) + parseInt(gsdata.answers[14],10) + parseInt(gsdata.answers[22],10);
         var stakePercent = getPercent(stakeScore,12);
         percentArray.push(stakePercent);
 
-        dirScore = parseInt(gsdata.answers[6]) +parseInt(gsdata.answers[7]) +parseInt(gsdata.answers[12]) +parseInt(gsdata.answers[16]);
+        dirScore = parseInt(gsdata.answers[6],10) +parseInt(gsdata.answers[7],10) +parseInt(gsdata.answers[12],10) +parseInt(gsdata.answers[16],10);
         var dirPercent = getPercent(dirScore,16);
         percentArray.push(dirPercent);
 
-        resScore = parseInt(gsdata.answers[3]) +parseInt(gsdata.answers[4]) +parseInt(gsdata.answers[17]) +parseInt(gsdata.answers[21]) +parseInt(gsdata.answers[23]) +parseInt(gsdata.answers[25]);
+        resScore = parseInt(gsdata.answers[3],10) +parseInt(gsdata.answers[4],10) +parseInt(gsdata.answers[17],10) +parseInt(gsdata.answers[21],10) +parseInt(gsdata.answers[23],10) +parseInt(gsdata.answers[25],10);
         var resPercent = getPercent(resScore,24);
         percentArray.push(resPercent);
 
-        enhScore = parseInt(gsdata.answers[9]) +parseInt(gsdata.answers[15]) +parseInt(gsdata.answers[18]) +parseInt(gsdata.answers[19]) +parseInt(gsdata.answers[20]) +parseInt(gsdata.answers[24]);
+        enhScore = parseInt(gsdata.answers[9],10) +parseInt(gsdata.answers[15],10) +parseInt(gsdata.answers[18],10) +parseInt(gsdata.answers[19],10) +parseInt(gsdata.answers[20],10) +parseInt(gsdata.answers[24],10);
         var enhPercent = getPercent(enhScore,24);
         percentArray.push(enhPercent);
 
@@ -989,7 +989,7 @@ function calcResults() {
             var resSet = 0;
             for(i=0; i<(dataset.answers.length - ansnums); i++){
                 var ans = ansnums + i;
-                resSet += parseInt(dataset.answers[ans]);
+                resSet += parseInt(dataset.answers[ans], 10);
             }
             return resSet;
         }
@@ -1090,7 +1090,7 @@ function registerPushwooshAndroid() {
     });
  
     //initialize Pushwoosh with projectid: "GOOGLE_PROJECT_ID", pw_appid : "PUSHWOOSH_APP_ID". This will trigger all pending push notifications on start.
-    pushNotification.onDeviceReady({ projectid: "864197909703", pw_appid : "4C804-675D6" });
+    pushNotification.onDeviceReady({ projectid: "335672732764", pw_appid : "42686-7A1E3" });
  
     //register for pushes
     pushNotification.registerDevice(
@@ -1120,7 +1120,7 @@ function registerPushwooshIOS() {
                             });
  
     //initialize the plugin
-    pushNotification.onDeviceReady({pw_appid:"4C804-675D6"});
+    pushNotification.onDeviceReady({pw_appid:"42686-7A1E3"});
      
     //register for pushes
     pushNotification.registerDevice(

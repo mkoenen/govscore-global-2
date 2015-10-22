@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
     <script type="text/javascript" src="lib/jquery-2.1.3.min.js"></script>
     <script type="text/javascript" src="lib/jquery.mobile-1.4.5.min.js"></script>
+    
     <title>Govscore</title>
     
 </head>
@@ -31,7 +32,7 @@
 
                 <h2 id="steps">Steps</h2>
 
-                <ul style="list-style:none">
+                <ul>
                 <li id="step1">Answer the 25 questions in the GovScore survey and click Submit</li>
                 <li id="step2">View your results on your phone.</li>
                 <li id="step3">Invite other board members to download App and complete GovScore survey.</li>
@@ -510,7 +511,7 @@
 
         <div data-role="header">
             <a href="#home" class="ui-nodisc-icon ui-btn ui-corner-all ui-btn-icon-left ui-btn-b ui-icon-home ui-btn-icon-notext">home</a>
-            <h1>Cultivating Accountability</h1>
+            <h1 id="accountability">Cultivating Accountability</h1>
         </div>
 
         <div data-role="content">
@@ -752,7 +753,7 @@
                     </div>
                 </form>
                 <br />
-                    <p>Please check your answers. You can only submit this form once.</p>
+                    <p id="check-answers2">Please check your answers. You can only submit this form once.</p>
                     <button class="ui-btn ui-shadow" id="ag1Store">Submit</button>
                     
             </article>
@@ -761,9 +762,9 @@
         <div data-role="footer" data-position="fixed">
              <div data-role="navbar">
                 <ul>
-                    <li><a href="#govscore">Govscore</a></li>
-                    <li><a href="#advanced-govscore" class="ui-btn-active ui-state-persist">Advanced</a></li>
-                    <li><a href="#govscore-results">Results</a></li>
+                    <li><a href="#govscore" id="gs">Govscore</a></li>
+                    <li><a href="#advanced-govscore" class="ui-btn-active ui-state-persist" id="adv4">Advanced</a></li>
+                    <li><a href="#govscore-results" id="res4">Results</a></li>
                 </ul>
             </div><!-- /navbar -->
         </div><!-- footer -->
@@ -777,7 +778,7 @@
 
         <div data-role="header">
             <a href="#home" class="ui-nodisc-icon ui-btn ui-corner-all ui-btn-icon-left ui-btn-b ui-icon-home ui-btn-icon-notext">home</a>
-            <h1>Engaging Stakeholders</h1>
+            <h1 id="stakeholders">Engaging Stakeholders</h1>
         </div><!-- header -->
 
         <div data-role="content">
@@ -785,7 +786,7 @@
             <article>
                 <a href="#govscore-results" id="ag2-results" class="ui-btn">Assessment Completed<br />See Your Results</a>
                 <form name="ag2Form" id="ag2Form">
-                    <h3>1. Achieving sincere stakeholder engagement</h3>
+                    <h3 id="header-es-1">1. Achieving sincere stakeholder engagement</h3>
 
                     
                     <div class="questions">
@@ -825,7 +826,7 @@
 
 
                     <br />
-                    <h3>2. Building trust</h3>
+                    <h3 id="header-es-2">2. Building trust</h3>
 
                     <div class="questions">
                         <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" >
@@ -864,7 +865,7 @@
 
 
                     <br />
-                    <h3>3. Engaging with patients or service users</h3>
+                    <h3 id="header-es-3">3. Engaging with patients or service users</h3>
                     
                     <div class="questions">
                         <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" >
@@ -903,7 +904,7 @@
 
 
                     <br />
-                    <h3>4. Engaging with doctors, other clinicians, and health workers</h3>
+                    <h3 id="header-es-4">4. Engaging with doctors, other clinicians, and health workers</h3>
 
                     <div class="questions">
                         <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" >
@@ -942,7 +943,7 @@
 
 
                     <br />
-                    <h3>5. Collaborating with other sectors </h3>
+                    <h3 id="header-es-5">5. Collaborating with other sectors </h3>
                    
                     <div class="questions">
                         <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" >
@@ -981,7 +982,7 @@
 
 
                     <br />
-                    <h3>6. Realizing gender-responsive governance</h3>
+                    <h3 id="header-es-6">6. Realizing gender-responsive governance</h3>
 
                  
                     <div class="questions">
@@ -1020,7 +1021,7 @@
                     </div>
                 </form>
                 <br />
-                <p>Please check your answers. You can only submit this form once.</p>
+                <p id="check-answers2">Please check your answers. You can only submit this form once.</p>
                 <button class="ui-btn ui-shadow" id="ag2Store">Submit</button>
                
             </article>
@@ -1030,9 +1031,9 @@
         <div data-role="footer" data-position="fixed">
              <div data-role="navbar">
                 <ul>
-                    <li><a href="#govscore">Govscore</a></li>
-                    <li><a href="#advanced-govscore" class="ui-btn-active ui-state-persist">Advanced</a></li>
-                    <li><a href="#govscore-results">Results</a></li>
+                    <li><a href="#govscore" id="gs">Govscore</a></li>
+                    <li><a href="#advanced-govscore" class="ui-btn-active ui-state-persist" id="adv5">Advanced</a></li>
+                    <li><a href="#govscore-results" id="res5">Results</a></li>
                 </ul>
             </div><!-- /navbar -->
         </div><!-- footer -->
@@ -1046,14 +1047,14 @@
 
         <div data-role="header">
             <a href="#home" class="ui-nodisc-icon ui-btn ui-corner-all ui-btn-icon-left ui-btn-b ui-icon-home ui-btn-icon-notext">home</a>
-            <h1>Setting Shared Strategic Direction</h1>
+            <h1 id="direction">Setting Shared Strategic Direction</h1>
         </div><!-- header -->
 
         <div data-role="content">
             <article>
                 <a href="#govscore-results" id="ag3-results" class="ui-btn">Assessment Completed<br />See Your Results</a> 
                 <form name="ag3Form" id="ag3Form">
-                    <h3>1. Defining the strategic direction of the organization</h3>
+                    <h3 id="header-ssd-1">1. Defining the strategic direction of the organization</h3>
 
                     <div class="questions" >
                         <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" >
@@ -1091,7 +1092,7 @@
                     </div>
 
                     <br />
-                    <h3>2. Establishing shared vision among key stakeholders</h3>
+                    <h3 id="header-ssd-2">2. Establishing shared vision among key stakeholders</h3>
                   
                     <div class="questions">
                         <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" >
@@ -1130,7 +1131,7 @@
 
 
                     <br />
-                    <h3>3. Enabling and exercising leadership in the organization</h3>
+                    <h3 id="header-ssd-3">3. Enabling and exercising leadership in the organization</h3>
 
                     <div class="questions" >
                         <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" >
@@ -1168,7 +1169,7 @@
                     </div>
                 </form>
                 <br />
-                <p>Please check your answers. You can only submit this form once.</p>
+                <p id="check-answers3">Please check your answers. You can only submit this form once.</p>
                 <button class="ui-btn ui-shadow" id="ag3Store">Submit</button>
                 
             </article>  
@@ -1178,9 +1179,9 @@
         <div data-role="footer" data-position="fixed">
              <div data-role="navbar">
                 <ul>
-                    <li><a href="#govscore">Govscore</a></li>
-                    <li><a href="#advanced-govscore" class="ui-btn-active ui-state-persist">Advanced</a></li>
-                    <li><a href="#govscore-results">Results</a></li>
+                    <li><a href="#govscore" id="gs">Govscore</a></li>
+                    <li><a href="#advanced-govscore" class="ui-btn-active ui-state-persist" id="idv6">Advanced</a></li>
+                    <li><a href="#govscore-results" id="res6">Results</a></li>
                 </ul>
             </div><!-- /navbar -->
         </div><!-- footer -->
@@ -1195,14 +1196,14 @@
 
         <div data-role="header">
             <a href="#home" class="ui-nodisc-icon ui-btn ui-corner-all ui-btn-icon-left ui-btn-b ui-icon-home ui-btn-icon-notext">home</a>
-            <h1>Stewarding Resources</h1>
+            <h1 id="resources">Stewarding Resources</h1>
         </div><!-- header -->
 
         <div data-role="content">
             <article>
                 <a href="#govscore-results" id="ag4-results" class="ui-btn">Assessment Completed<br />See Your Results</a>
                 <form name="ag4Form" id="ag4Form">
-                    <h3>1. Mobilizing resources</h3>
+                    <h3 id="header-sr-1">1. Mobilizing resources</h3>
 
                     <div class="questions">
                         <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" >
@@ -1241,7 +1242,7 @@
 
 
                     <br />
-                    <h3>2. Wisely using resources </h3>
+                    <h3 id="header-sr-2">2. Wisely using resources </h3>
 
                     <div class="questions">
                         <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" >
@@ -1280,7 +1281,7 @@
 
 
                     <br />
-                    <h3>3. Pursuit of efficiency and sustainability</h3>
+                    <h3 id="header-sr-3">3. Pursuit of efficiency and sustainability</h3>
             
                     <div class="questions">
                         <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" >
@@ -1319,7 +1320,7 @@
 
 
                     <br />
-                    <h3>4. Use of information, evidence and technology</h3>
+                    <h3 id="header-sr-4">4. Use of information, evidence and technology</h3>
                 
                     <div class="questions">
                         <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" >
@@ -1358,7 +1359,7 @@
 
 
                     <br />
-                    <h3>5. Practice of ethical and moral integrity</h3>
+                    <h3 id="header-sr-5">5. Practice of ethical and moral integrity</h3>
           
                     <div class="questions">
                         <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" >
@@ -1397,7 +1398,7 @@
 
 
                     <br />
-                    <h3>6. Eradicating corruption</h3>
+                    <h3 id="header-sr-6">6. Eradicating corruption</h3>
                  
                     <div class="questions">
                         <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" >
@@ -1435,7 +1436,7 @@
                     </div>
                 </form>
                 <br />
-                <p>Please check your answers. You can only submit this form once.</p>
+                <p id="check-answers4">Please check your answers. You can only submit this form once.</p>
                 <button class="ui-btn ui-shadow" id="ag4Store">Submit</button>
                 
             </article>
@@ -1445,9 +1446,9 @@
         <div data-role="footer" data-position="fixed">
              <div data-role="navbar">
                 <ul>
-                    <li><a href="#govscore">Govscore</a></li>
-                    <li><a href="#advanced-govscore" class="ui-btn-active ui-state-persist">Advanced</a></li>
-                    <li><a href="#govscore-results">Results</a></li>
+                    <li><a href="#govscore" id="gs">Govscore</a></li>
+                    <li><a href="#advanced-govscore" class="ui-btn-active ui-state-persist" id="idv7">Advanced</a></li>
+                    <li><a href="#govscore-results" id="res7">Results</a></li>
                 </ul>
             </div><!-- /navbar -->
         </div><!-- footer -->
@@ -1461,14 +1462,14 @@
 
         <div data-role="header">
             <a href="#home" class="ui-nodisc-icon ui-btn ui-corner-all ui-btn-icon-left ui-btn-b ui-icon-home ui-btn-icon-notext">home</a>
-            <h1>Continuous Governance Enhancement</h1>
+            <h1 id="enhancement">Continuous Governance Enhancement</h1>
         </div><!-- header -->
 
         <div data-role="content">
             <article>
                 <a href="#govscore-results" id="ag5-results" class="ui-btn">Assessment Completed<br />See Your Results</a>
                 <form name="ag5Form" id="ag5Form">
-                    <h3>1. Cultivating governance competencies</h3>
+                    <h3 id="header-cce-1">1. Cultivating governance competencies</h3>
           
                     <div class="questions">
                         <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" >
@@ -1507,7 +1508,7 @@
 
 
                     <br />
-                    <h3>2. Building diversity in the organization</h3>
+                    <h3 id="header-cce-2">2. Building diversity in the organization</h3>
                   
                     <div class="questions">
                         <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" >
@@ -1546,7 +1547,7 @@
 
 
                     <br />
-                    <h3>3. Organizing governance orientation and continuous governance education</h3>
+                    <h3 id="header-cce-3">3. Organizing governance orientation and continuous governance education</h3>
               
                     <div class="questions">
                         <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" >
@@ -1585,7 +1586,7 @@
 
 
                     <br />
-                    <h3>4. Performing regular governance assessments and working for continuous governance enhancement</h3>
+                    <h3 id="header-cce-4">4. Performing regular governance assessments and working for continuous governance enhancement</h3>
                  
                     <div class="questions">
                         <fieldset data-role="controlgroup" data-type="horizontal" data-mini="true" >
@@ -1623,7 +1624,7 @@
                     </div>
                 </form>
                 <br />
-                <p>Please check your answers. You can only submit this form once.</p>
+                <p id="check-answers5">Please check your answers. You can only submit this form once.</p>
                 <button class="ui-btn ui-shadow" id="ag5Store">Submit</button>
                 
             </article>
@@ -1633,9 +1634,9 @@
         <div data-role="footer" data-position="fixed">
              <div data-role="navbar">
                 <ul>
-                    <li><a href="#govscore">Govscore</a></li>
-                    <li><a href="#advanced-govscore" class="ui-btn-active ui-state-persist">Advanced</a></li>
-                    <li><a href="#govscore-results">Results</a></li>
+                    <li><a href="#govscore" id="gs">Govscore</a></li>
+                    <li><a href="#advanced-govscore" class="ui-btn-active ui-state-persist" id="idv8">Advanced</a></li>
+                    <li><a href="#govscore-results" id="res8">Results</a></li>
                 </ul>
             </div><!-- /navbar -->
         </div><!-- footer -->
@@ -1649,12 +1650,13 @@
 
         <div data-role="header">
             <a href="#home" class="ui-nodisc-icon ui-btn ui-corner-all ui-btn-icon-left ui-btn-b ui-icon-home ui-btn-icon-notext">home</a>
-            <h1>Govscore Results</h1>
+            <h1 id="gs-res-header">Govscore Results</h1>
         </div><!-- header -->
 
         <div data-role="content">
             <article>
                 <div id="gs-results">
+                   <p id="no-results">No results available at this time.</p>
 
                     
 
@@ -1665,9 +1667,9 @@
         <div data-role="footer" data-position="fixed">
              <div data-role="navbar">
                 <ul>
-                    <li><a href="#govscore">Govscore</a></li>
-                    <li><a href="#advanced-govscore">Advanced</a></li>
-                    <li><a href="#govscore-results" class="ui-btn-active ui-state-persist">Results</a></li>
+                    <li><a href="#govscore" id="gs">Govscore</a></li>
+                    <li><a href="#advanced-govscore" id="adv9">Advanced</a></li>
+                    <li><a href="#govscore-results" class="ui-btn-active ui-state-persist" id="res9">Results</a></li>
                 </ul>
             </div><!-- /navbar -->
         </div><!-- footer -->
